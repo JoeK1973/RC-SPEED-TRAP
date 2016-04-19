@@ -2,19 +2,30 @@ unsigned long count_start;
 unsigned long count_stop;
 unsigned long count_time;
 
-int r_one_pin = 2;
-int r_two_pin = 3;
-
-int rcvr_one = 0;
-int rcvr_two = 0;
+int rcvr_one = 2;
+int rcvr_two = 3;
+int direction;
 
 
 void setup(){
-  pinMode(r_one_pin, INPUT);
-  pinMode(r_two_pin, INPUT);
+  pinMode(rcvr_one, INPUT);
+  pinMode(rcvr_two, INPUT);
 }
 
 void loop(){
-  rcvr_one = digitalRead(r_one_pin);
-  rcvr_two = digitalRead(r_two_pin);
+  if (digitalRead(rcvr_one) == HIGH && digitalRead(rcvr_two) == LOW){
+    direction = 1;
+  } else if (digitalRead(rcvr_one) == LOW && digitalRead(rcvr_two) == HIGH){
+    direction = 2;
+  } else {
+    direction = 0;
+  }
+  
+  if (direction == 1) || (direction == 2){
+    timing();
+  }
+}
+
+void timing(){
+  
 }
