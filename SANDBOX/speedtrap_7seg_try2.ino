@@ -25,7 +25,12 @@ void loop(){
     speed_displayed = (int) speedMPH; //chops the decimal off the end of the number and converts it to integer type
     Serial.println("Speed is:")
     Serial.println(speed_displayed);
-    count_state = 0; // resets the count_state to start listening for the next RC vehicle
+    // then reset the variables to 0 ready for the next car
+    count_state = 0; 
+    first_beam_broken = 0;
+    second_beam_broken = 0;
+    speedMPH = 0; // 
+    speed_displayed = 0;
   }
 }
 
