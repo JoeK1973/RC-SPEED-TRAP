@@ -21,7 +21,7 @@ void setup(){
 void loop(){
   if (count_state == 2){
     count_time = count_stop - count_start;
-    speedMPH = (distance / count_time) * 2.2374
+    speedMPH = ((distance / count_time) * 2236.94);
     speed_displayed = (int) speedMPH; //chops the decimal off the end of the number and converts it to integer type
     Serial.println("Speed is:")
     Serial.println(speed_displayed);
@@ -36,22 +36,22 @@ void loop(){
 
 void counter_one(){
   if (count_state == 0){ // if the count hasn't started yet
-    count_start = millis();
+    count_start = micros();
     first_beam_broken = 1;
     count_state = 1;
   } else if (count_state == 1) && (second_beam_broken == 1){
-    count_stop = millis();
+    count_stop = micros();
     count_state = 2;
   }
 }
 
 void counter_two(){
   if (count_state == 0){ // if the count hasn't started yet
-    count_start = millis();
+    count_start = micros();
     second_beam_broken = 1;
     count_state = 1;
   } else if (count_state == 1) && (first_beam_broken == 1){
-    count_stop = millis();
+    count_stop = micros();
     count_state = 2;
   }
 }
