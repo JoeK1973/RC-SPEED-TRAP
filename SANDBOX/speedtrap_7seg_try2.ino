@@ -13,8 +13,8 @@ int speed_displayed = 0;
 void setup(){
   pinMode(rcvr_one, INPUT_PULLUP);
   pinMode(rcvr_two, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(rcvr_one), counter_one, FALLING);
-  attachInterrupt(digitalPinToInterrupt(rcvr_two), counter_two, FALLING);
+  attachInterrupt(rcvr_one, counter_one, FALLING);
+  attachInterrupt(rcvr_two, counter_two, FALLING);
 }
 
 void loop(){
@@ -22,7 +22,7 @@ void loop(){
     count_time = count_stop - count_start;
     speedMPH = ((distance / count_time) * 2236.94);
     speed_displayed = (int) speedMPH; //chops the decimal off the end of the number and converts it to integer type
-    Serial.println("Speed is:")
+    Serial.println("Speed is:");
     Serial.println(speed_displayed);
     // then reset the variables to 0 ready for the next car
     count_state = 0; 
@@ -39,7 +39,7 @@ void counter_one(){
     count_start = micros();
     first_beam_broken = 1;
     count_state = 1;
-  } else if (count_state == 1) && (second_beam_broken == 1){
+  } else if ((count_state == 1) && (second_beam_broken == 1)){
     count_stop = micros();
     count_state = 2;
   }
@@ -50,7 +50,7 @@ void counter_two(){
     count_start = micros();
     second_beam_broken = 1;
     count_state = 1;
-  } else if (count_state == 1) && (first_beam_broken == 1){
+  } else if ((count_state == 1) && (first_beam_broken == 1)){
     count_stop = micros();
     count_state = 2;
   }
