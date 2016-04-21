@@ -30,6 +30,7 @@ void loop(){
     second_beam_broken = 0;
     speedMPH = 0; // 
     speed_displayed = 0;
+    delay(1000);
   }
 }
 
