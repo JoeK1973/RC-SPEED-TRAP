@@ -1,10 +1,9 @@
-unsigned long count_start;
-unsigned long count_stop;
-unsigned long count_time;
-
-int count_state = 0; // 0 for count not started, 1 for count started, 2 for finished
-int first_beam_broken = 0;
-int second_beam_broken = 0;
+volatile unsigned long count_start;
+volatile unsigned long count_stop;
+volatile unsigned long count_time;
+volatile int count_state = 0; // 0 for count not started, 1 for count started, 2 for finished
+volatile int first_beam_broken = 0;
+volatile int second_beam_broken = 0;
 int rcvr_one = 2;
 int rcvr_two = 3;
 float distance = 75; //(Distance in mm between the laser beams)
